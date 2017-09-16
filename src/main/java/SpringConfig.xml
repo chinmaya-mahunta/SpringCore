@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="resturant" class="org.cm.beans.Resturant">
+		<property name="welcomeNote" value="Setter injection of Resturant"></property>
+		<constructor-arg name="initialText" value="Constructor Injection of Resturant"></constructor-arg>
+		<property name="tea" ref="tea"></property><!-- Object injection -->
+	</bean>
+	<bean id="tea" class="org.cm.beans.Tea">
+		<property name="milk" value="true"></property>
+		<property name="cold" value="false"></property>
+	</bean>
+</beans>
