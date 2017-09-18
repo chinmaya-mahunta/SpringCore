@@ -1,10 +1,12 @@
 package org.cm.main;
 
+import org.cm.beans.BeanLifecycle;
 import org.cm.beans.Resturant;
 import org.omg.CORBA.portable.ApplicationException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
@@ -23,7 +25,18 @@ public class SpringCoreMain {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("SpringConfig.xml");
 		Resturant resturant = (Resturant) context.getBean("resturant");
+		
+		//Bean alias in SpringConfig.xml
+		//Resturant resturant = (Resturant) context.getBean("resturant-alias");
+		//Resturant resturant = (Resturant) context.getBean("resturant-alias1");
 		resturant.takeOrder();
+		System.out.println("-------------------------------------------");
+	//For bean life cycle
+		/*AbstractApplicationContext context = new ClassPathXmlApplicationContext("SpringConfig.xml");
+		context.registerShutdownHook();
+		BeanLifecycle beanLifecycle = (BeanLifecycle) context.getBean("beanLifeCycle");
+		beanLifecycle.execute();*/
+		
 		
 	}
 
